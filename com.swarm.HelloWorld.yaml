@@ -1,0 +1,21 @@
+---
+RecipeFormatVersion: '2020-01-25' # Don't change this line
+ComponentName: HelloWorld
+ComponentVersion: 1.0.0
+ComponentDescription: Sample AWS IoT Greengrass component
+ComponentPublisher: Enviro-Tech
+Manifests:
+- Name: Linux
+  Platform:
+    os: linux
+  Lifecycle:
+    Run:
+      Script: python3 {artifacts:path}/main.py
+      RequiresPrivilege: True
+  Artifacts:
+  # This entire project will get uploaded to S3 (a file store)
+  # and this is the S3 location of our entry point code
+  # But there's an easier solution which doesn't involve any of this yaml or s3 nonsense
+  # Stay tuned
+  - Uri: s3://greengrass-component-artifacts-592951731404-us-west-2/artifacts/com.swarm.HelloWorld/1.0.0/main.py
+ 
